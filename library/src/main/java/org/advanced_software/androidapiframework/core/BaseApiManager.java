@@ -39,7 +39,7 @@ public abstract class BaseApiManager {
      *
      * @param request api request before executing
      */
-    protected abstract void addAuthCredentials(ApiRequest request);
+    protected abstract boolean addAuthCredentials(ApiRequest request);
 
 
 }

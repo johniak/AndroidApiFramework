@@ -144,8 +144,12 @@ public abstract class Api {
         }
 
         protected Object job(ApiRequest request) {
-            if (needAuth)
-                apiManager.addAuthCredentials(request);
+            if (needAuth) {
+                if (!apiManager.addAuthCredentials(request)) {
+                    return new ApiError(ApiError.INVALID_LOGIN_CREDENTIALS);
+                }
+            }
+
             try {
                 request.request();
             } catch (IOException e) {

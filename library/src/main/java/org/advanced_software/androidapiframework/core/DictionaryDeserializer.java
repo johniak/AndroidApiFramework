@@ -21,11 +21,11 @@ import java.util.TreeMap;
 public class DictionaryDeserializer implements JsonDeserializer<TreeMap> {
     @Override
     public TreeMap deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
-        TreeMap<Long, String> treeMap = new TreeMap<Long, String>();
+        TreeMap<String, String> treeMap = new TreeMap<String, String>();
         JsonArray mapArray= jsonElement.getAsJsonArray();
         for(JsonElement mapElement :mapArray){
             JsonObject mapObject = mapElement.getAsJsonObject();
-            treeMap.put(mapObject.get("key").getAsLong(),mapObject.get("value").getAsString());
+            treeMap.put(mapObject.get("key").getAsString(),mapObject.get("value").getAsString());
         }
         return treeMap;
     }
